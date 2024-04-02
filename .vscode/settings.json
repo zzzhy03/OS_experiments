@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.py": "python",
-        "stat.h": "c"
+        "stat.h": "c",
+        "user.h": "c"
     }
 }
