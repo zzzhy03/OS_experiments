@@ -8,6 +8,8 @@ OBJS = \
   $K/printf.o \
   $K/uart.o \
   $K/kalloc.o \
+  $K/zalloc.o \
+  $K/zallocshow.o \
   $K/spinlock.o \
   $K/string.o \
   $K/main.o \
@@ -133,6 +135,7 @@ UPROGS=\
 	$U/_wc\
 	$U/_zombie\
 	$U/_test_getprocs\
+	$U/_test_zallocshowuser\
 
 fs.img: mkfs/mkfs README $(UPROGS)
 	mkfs/mkfs fs.img README $(UPROGS)

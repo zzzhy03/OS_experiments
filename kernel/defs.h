@@ -64,6 +64,15 @@ void*           kalloc(void);
 void            kfree(void *);
 void            kinit(void);
 
+// zalloc.c
+void*           zalloc(int);
+void            zfree(void *);
+void            zinit(void);
+
+// zallocshow.c
+int             zallocshow();
+
+
 // log.c
 void            initlog(int, struct superblock*);
 void            log_write(struct buf*);

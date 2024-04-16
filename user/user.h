@@ -23,6 +23,7 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 int getprocs(void);
+int zallocshowuser(void);
 
 
 // ulib.c

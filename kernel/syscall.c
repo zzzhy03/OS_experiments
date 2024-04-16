@@ -102,9 +102,11 @@ extern uint64 sys_link(void);
 extern uint64 sys_mkdir(void);
 extern uint64 sys_close(void);
 extern uint64 sys_getprocs(void);
+extern uint64 sys_zallocshowuser(void);
 
 // An array mapping syscall numbers from syscall.h
 // to the function that handles the system call.
+
 static uint64 (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
 [SYS_exit]    sys_exit,
@@ -128,6 +130,7 @@ static uint64 (*syscalls[])(void) = {
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
 [SYS_getprocs] sys_getprocs,
+[SYS_zallocshowuser] sys_zallocshowuser
 };
 
 void
