@@ -91,7 +91,6 @@ zalloc(int nbyte)
             p->next = r->next; 
             if(r->next != 0)r->next->prev = p;
             r->next = p; p->prev = r;
-            
         }else{
             r->isFree = 0;
         }

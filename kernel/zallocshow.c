@@ -26,15 +26,12 @@ void show(){
   r = zmem.freelist;
   release(&zmem.lock);
   while(r != 0){
-    // printf("%p\n", r);
     printf("%p %d %d\n", r, r->siz, r->isFree);
     r = r->next;
   }
   printf("\n");
   return;
 }
-
-
 int zallocshow(){
     show();
     void *p1 = zalloc(34);
