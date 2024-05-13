@@ -49,7 +49,7 @@ zfree(void *pa)
   release(&zmem.lock);
 
   while(r != 0){
-    if(( (uint64)pa + ZALLOCINFO) == (uint64)r){
+    if(( (uint64)pa - ZALLOCINFO) == (uint64)r){
         r->isFree = 1;
         if(r->next != 0 && r->next->isFree == 1){
             r->siz += r->next->siz;
@@ -84,7 +84,7 @@ zalloc(int nbyte)
   while(r != 0){
     if(r->isFree==1 && r->siz >= (nbyte + ZALLOCINFO)){
         if(r->siz - (nbyte + ZALLOCINFO) > 24){
-            struct run *p = (struct run*)((uint64)r - (nbyte + ZALLOCINFO)); 
+            struct run *p = (struct run*)((uint64)r + (nbyte + ZALLOCINFO)); 
             r->isFree = 0; p->isFree = 1;
             p->siz = r->siz - (nbyte + ZALLOCINFO);
             r->siz = nbyte + ZALLOCINFO;
@@ -95,7 +95,7 @@ zalloc(int nbyte)
         }else{
             r->isFree = 0;
         }
-        return (void*)((uint64)r-ZALLOCINFO);
+        return (void*)((uint64)r+ZALLOCINFO);
     }
     r = r->next;
     
